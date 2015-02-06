@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		3BCF507A1A856E1500BCE10F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50791A856E1500BCE10F /* main.m */; };
+		3BCF507D1A856E1500BCE10F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507C1A856E1500BCE10F /* AppDelegate.m */; };
+		3BCF50801A856E1500BCE10F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507F1A856E1500BCE10F /* ViewController.m */; };
+		3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50811A856E1500BCE10F /* Main.storyboard */; };
+		3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50841A856E1500BCE10F /* Images.xcassets */; };
+		3BCF50881A856E1500BCE10F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50861A856E1500BCE10F /* LaunchScreen.xib */; };
+		3BCF50941A856E1500BCE10F /* Tic_Tac_SnowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50931A856E1500BCE10F /* Tic_Tac_SnowTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		3BCF508E1A856E1500BCE10F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 3BCF506C1A856E1500BCE10F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 3BCF50731A856E1500BCE10F;
+			remoteInfo = "Tic Tac Snow";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		3BCF50741A856E1500BCE10F /* Tic Tac Snow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tic Tac Snow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCF50781A856E1500BCE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BCF50791A856E1500BCE10F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		3BCF507B1A856E1500BCE10F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		3BCF507C1A856E1500BCE10F /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		3BCF507E1A856E1500BCE10F /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		3BCF507F1A856E1500BCE10F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		3BCF50821A856E1500BCE10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		3BCF50841A856E1500BCE10F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		3BCF50871A856E1500BCE10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		3BCF508D1A856E1500BCE10F /* Tic Tac SnowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tic Tac SnowTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3BCF50921A856E1500BCE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3BCF50931A856E1500BCE10F /* Tic_Tac_SnowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tic_Tac_SnowTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		3BCF50711A856E1500BCE10F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BCF508A1A856E1500BCE10F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		3BCF506B1A856E1500BCE10F = {
+			isa = PBXGroup;
+			children = (
+				3BCF50761A856E1500BCE10F /* Tic Tac Snow */,
+				3BCF50901A856E1500BCE10F /* Tic Tac SnowTests */,
+				3BCF50751A856E1500BCE10F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		3BCF50751A856E1500BCE10F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF50741A856E1500BCE10F /* Tic Tac Snow.app */,
+				3BCF508D1A856E1500BCE10F /* Tic Tac SnowTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		3BCF50761A856E1500BCE10F /* Tic Tac Snow */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF507B1A856E1500BCE10F /* AppDelegate.h */,
+				3BCF507C1A856E1500BCE10F /* AppDelegate.m */,
+				3BCF507E1A856E1500BCE10F /* ViewController.h */,
+				3BCF507F1A856E1500BCE10F /* ViewController.m */,
+				3BCF50811A856E1500BCE10F /* Main.storyboard */,
+				3BCF50841A856E1500BCE10F /* Images.xcassets */,
+				3BCF50861A856E1500BCE10F /* LaunchScreen.xib */,
+				3BCF50771A856E1500BCE10F /* Supporting Files */,
+			);
+			path = "Tic Tac Snow";
+			sourceTree = "<group>";
+		};
+		3BCF50771A856E1500BCE10F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF50781A856E1500BCE10F /* Info.plist */,
+				3BCF50791A856E1500BCE10F /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		3BCF50901A856E1500BCE10F /* Tic Tac SnowTests */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF50931A856E1500BCE10F /* Tic_Tac_SnowTests.m */,
+				3BCF50911A856E1500BCE10F /* Supporting Files */,
+			);
+			path = "Tic Tac SnowTests";
+			sourceTree = "<group>";
+		};
+		3BCF50911A856E1500BCE10F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3BCF50921A856E1500BCE10F /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		3BCF50731A856E1500BCE10F /* Tic Tac Snow */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BCF50971A856E1500BCE10F /* Build configuration list for PBXNativeTarget "Tic Tac Snow" */;
+			buildPhases = (
+				3BCF50701A856E1500BCE10F /* Sources */,
+				3BCF50711A856E1500BCE10F /* Frameworks */,
+				3BCF50721A856E1500BCE10F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Tic Tac Snow";
+			productName = "Tic Tac Snow";
+			productReference = 3BCF50741A856E1500BCE10F /* Tic Tac Snow.app */;
+			productType = "com.apple.product-type.application";
+		};
+		3BCF508C1A856E1500BCE10F /* Tic Tac SnowTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 3BCF509A1A856E1500BCE10F /* Build configuration list for PBXNativeTarget "Tic Tac SnowTests" */;
+			buildPhases = (
+				3BCF50891A856E1500BCE10F /* Sources */,
+				3BCF508A1A856E1500BCE10F /* Frameworks */,
+				3BCF508B1A856E1500BCE10F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				3BCF508F1A856E1500BCE10F /* PBXTargetDependency */,
+			);
+			name = "Tic Tac SnowTests";
+			productName = "Tic Tac SnowTests";
+			productReference = 3BCF508D1A856E1500BCE10F /* Tic Tac SnowTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		3BCF506C1A856E1500BCE10F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = helenwang;
+				TargetAttributes = {
+					3BCF50731A856E1500BCE10F = {
+						CreatedOnToolsVersion = 6.1.1;
+					};
+					3BCF508C1A856E1500BCE10F = {
+						CreatedOnToolsVersion = 6.1.1;
+						TestTargetID = 3BCF50731A856E1500BCE10F;
+					};
+				};
+			};
+			buildConfigurationList = 3BCF506F1A856E1500BCE10F /* Build configuration list for PBXProject "Tic Tac Snow" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 3BCF506B1A856E1500BCE10F;
+			productRefGroup = 3BCF50751A856E1500BCE10F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				3BCF50731A856E1500BCE10F /* Tic Tac Snow */,
+				3BCF508C1A856E1500BCE10F /* Tic Tac SnowTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		3BCF50721A856E1500BCE10F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */,
+				3BCF50881A856E1500BCE10F /* LaunchScreen.xib in Resources */,
+				3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BCF508B1A856E1500BCE10F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		3BCF50701A856E1500BCE10F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCF50801A856E1500BCE10F /* ViewController.m in Sources */,
+				3BCF507D1A856E1500BCE10F /* AppDelegate.m in Sources */,
+				3BCF507A1A856E1500BCE10F /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		3BCF50891A856E1500BCE10F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				3BCF50941A856E1500BCE10F /* Tic_Tac_SnowTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		3BCF508F1A856E1500BCE10F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 3BCF50731A856E1500BCE10F /* Tic Tac Snow */;
+			targetProxy = 3BCF508E1A856E1500BCE10F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		3BCF50811A856E1500BCE10F /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BCF50821A856E1500BCE10F /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		3BCF50861A856E1500BCE10F /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				3BCF50871A856E1500BCE10F /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		3BCF50951A856E1500BCE10F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		3BCF50961A856E1500BCE10F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		3BCF50981A856E1500BCE10F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Tic Tac Snow/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		3BCF50991A856E1500BCE10F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Tic Tac Snow/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		3BCF509B1A856E1500BCE10F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tic Tac SnowTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tic Tac Snow.app/Tic Tac Snow";
+			};
+			name = Debug;
+		};
+		3BCF509C1A856E1500BCE10F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "Tic Tac SnowTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Tic Tac Snow.app/Tic Tac Snow";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		3BCF506F1A856E1500BCE10F /* Build configuration list for PBXProject "Tic Tac Snow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCF50951A856E1500BCE10F /* Debug */,
+				3BCF50961A856E1500BCE10F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		3BCF50971A856E1500BCE10F /* Build configuration list for PBXNativeTarget "Tic Tac Snow" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCF50981A856E1500BCE10F /* Debug */,
+				3BCF50991A856E1500BCE10F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		3BCF509A1A856E1500BCE10F /* Build configuration list for PBXNativeTarget "Tic Tac SnowTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				3BCF509B1A856E1500BCE10F /* Debug */,
+				3BCF509C1A856E1500BCE10F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 3BCF506C1A856E1500BCE10F /* Project object */;
+}
