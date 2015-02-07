@@ -84,7 +84,7 @@
     // determine if view frames are intersecting
     for (int i=1; i<10; i++){
         if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
-            NSLog(@"THEY'RE INTERSECTING");
+            //NSLog(@"THEY'RE INTERSECTING");
         
             // add image
             //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x100.png"]];
