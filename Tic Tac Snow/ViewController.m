@@ -86,6 +86,7 @@
                 if (imageView.image == nil){
                     imageView.image = [UIImage imageNamed:@"X"];
                     [[self.view viewWithTag:i] addSubview:imageView];
+                    [self resetX];
                     self.moveCount++;
                     [self toggleTurn];
                     NSLog(@"Move count: %ld", (long)self.moveCount);
@@ -102,6 +103,7 @@
                 if (imageView.image == nil){
                     imageView.image = [UIImage imageNamed:@"O"];
                     [[self.view viewWithTag:i] addSubview:imageView];
+                    [self resetO];
                     self.moveCount++;
                     [self toggleTurn];
                     NSLog(@"Move count: %ld", (long)self.moveCount);
@@ -129,6 +131,30 @@
         self.oView.alpha = 1;
         self.oView.userInteractionEnabled = true;
     }
+}
+
+// "return" X into original position
+- (void)resetX {
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         self.xView.center = CGPointMake(66,600);
+                     }
+                     completion:^(BOOL complete){
+                         NSLog(@"RESET PIECE");
+                     }
+     ];
+}
+
+// "return" O into original position
+- (void)resetO {
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         self.oView.center = CGPointMake(309,597);
+                     }
+                     completion:^(BOOL complete){
+                         NSLog(@"RESET PIECE");
+                     }
+     ];
 }
 
 // NOTE: NOT WORKING PROPERLY
