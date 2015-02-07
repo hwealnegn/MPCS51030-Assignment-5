@@ -31,6 +31,11 @@
         [self.gridTracker addObject:@"0"]; // initialize
     }
     
+    self.xArray = [[NSMutableArray alloc] init];
+    [self.xArray addObject:@"10"];
+    self.oArray = [[NSMutableArray alloc] init];
+    [self.oArray addObject:@"10"];
+    
     [self toggleTurn];
 
 }
@@ -98,7 +103,7 @@
                         [[self.view viewWithTag:i] addSubview:imageView];
                         [self successX];
                         self.moveCount++;
-                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"taken"];
+                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"X"];
                         [self toggleTurn];
                         NSLog(@"Placed piece at: %d", i);
                         NSLog(@"Move count: %ld", (long)self.moveCount);
@@ -127,7 +132,7 @@
                         [[self.view viewWithTag:i] addSubview:imageView];
                         [self successO];
                         self.moveCount++;
-                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"taken"];
+                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"O"];
                         [self toggleTurn];
                         NSLog(@"Move count: %ld", (long)self.moveCount);
                     } else {
@@ -140,7 +145,7 @@
             }
         }
     }
-
+    [self checkForWin];
 }
 
 - (IBAction)closeInfo:(id)sender {
@@ -209,6 +214,48 @@
                          NSLog(@"RESET PIECE");
                      }
      ];
+}
+
+- (void)checkForWin {
+    NSLog(@"Check for win is working");
+    
+    //NSMutableArray *xArray; // keep track of where X's are
+    //NSMutableArray *oArray; // keep track of where O's are
+    
+    for (int i=0; i<10; i++){
+        NSLog(@"Here's what is recorded in grid tracker at %d: %@", i, [self.gridTracker objectAtIndex:i]);
+        
+        if ([[self.gridTracker objectAtIndex:i] isEqual:@"X"]){
+            NSLog(@"MATCH!");
+            //[xArray addObject:[NSNumber numberWithInt:i]]; // add index to X array
+            [self.xArray addObject:[NSString stringWithFormat:@"%d",i]];
+        }
+        if ([[self.gridTracker objectAtIndex:i] isEqual:@"O"]){
+            [self.oArray addObject:[NSString stringWithFormat:@"%d",i]]; // add index to O array
+        }
+    }
+    
+    if (([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"1"] && [self.xArray containsObject:@"2"]) ||
+        ([self.xArray containsObject:@"3"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"5"]) ||
+        ([self.xArray containsObject:@"6"] && [self.xArray containsObject:@"7"] && [self.xArray containsObject:@"8"]) ||
+        ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"3"] && [self.xArray containsObject:@"6"]) ||
+        ([self.xArray containsObject:@"1"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"7"]) ||
+        ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"5"] && [self.xArray containsObject:@"8"]) ||
+        ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"8"]) ||
+        ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"6"])) {
+        NSLog(@"X WINS!");
+    }
+    
+    if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
+        ([self.oArray containsObject:@"3"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"5"]) ||
+        ([self.oArray containsObject:@"6"] && [self.oArray containsObject:@"7"] && [self.oArray containsObject:@"8"]) ||
+        ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"3"] && [self.oArray containsObject:@"6"]) ||
+        ([self.oArray containsObject:@"1"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"7"]) ||
+        ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"5"] && [self.oArray containsObject:@"8"]) ||
+        ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"8"]) ||
+        ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"6"])) {
+        NSLog(@"O WINS!");
+    }
 }
 
 // NOTE: NOT WORKING PROPERLY

@@ -35,6 +35,8 @@
 @property NSInteger moveCount;
 
 @property NSMutableArray *gridTracker;
+@property NSMutableArray *xArray;
+@property NSMutableArray *oArray;
 
 - (IBAction)infoPressed:(id)sender;
 - (IBAction)closeInfo:(id)sender;
