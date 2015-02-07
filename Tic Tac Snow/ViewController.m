@@ -74,39 +74,51 @@
     if(recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended.");
         // determine if view frames are intersecting
-        // NOTE TO SELF: NEED TO FIX WHEN INTERSECTING MORE THAN ONE VIEW FRAME IN GRID
         for (int i=1; i<10; i++){
             if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
-                //NSLog(@"THEY'RE INTERSECTING");
+                // check the area of overlap (must be >5000 to continue)
+                // this is to ensure that only one frame is filled (adjacent ones aren't affected)
+                CGRect intersection = CGRectIntersection(self.xView.frame, [self.view viewWithTag:i].frame);
+                NSInteger area = intersection.size.width * intersection.size.height;
+                if (area > 5000){
+                    // add image
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
                 
-                // add image
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-                
-                // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                if (imageView.image == nil){
-                    imageView.image = [UIImage imageNamed:@"X"];
-                    [[self.view viewWithTag:i] addSubview:imageView];
+                    // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
+                    if (imageView.image == nil){
+                        imageView.image = [UIImage imageNamed:@"X"];
+                        [[self.view viewWithTag:i] addSubview:imageView];
+                        [self resetX];
+                        self.moveCount++;
+                        [self toggleTurn];
+                        NSLog(@"Move count: %ld", (long)self.moveCount);
+                    }
+                } else {
                     [self resetX];
-                    self.moveCount++;
-                    [self toggleTurn];
-                    NSLog(@"Move count: %ld", (long)self.moveCount);
                 }
             }
             
             if (CGRectIntersectsRect(self.oView.frame, [self.view viewWithTag:i].frame)) {
-                //NSLog(@"THEY'RE INTERSECTING");
+                // check the area of overlap (must be >5000 to continue)
+                // this is to ensure that only one frame is filled (adjacent ones aren't affected)
+                CGRect intersection = CGRectIntersection(self.oView.frame, [self.view viewWithTag:i].frame);
+                NSInteger area = intersection.size.width * intersection.size.height;
+                if (area > 5000){
                 
-                // add image
-                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                    // add image
+                    UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
                 
-                // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                if (imageView.image == nil){
-                    imageView.image = [UIImage imageNamed:@"O"];
-                    [[self.view viewWithTag:i] addSubview:imageView];
+                    // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
+                    if (imageView.image == nil){
+                        imageView.image = [UIImage imageNamed:@"O"];
+                        [[self.view viewWithTag:i] addSubview:imageView];
+                        [self resetO];
+                        self.moveCount++;
+                        [self toggleTurn];
+                        NSLog(@"Move count: %ld", (long)self.moveCount);
+                    }
+                } else {
                     [self resetO];
-                    self.moveCount++;
-                    [self toggleTurn];
-                    NSLog(@"Move count: %ld", (long)self.moveCount);
                 }
             }
         }
