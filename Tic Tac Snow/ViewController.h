@@ -10,6 +10,20 @@
 
 @interface ViewController : UIViewController
 
+@property (weak, nonatomic) IBOutlet UIImageView *grid;
+@property (weak, nonatomic) IBOutlet UIView *leftTop;
+@property (weak, nonatomic) IBOutlet UIView *centerTop;
+@property (weak, nonatomic) IBOutlet UIView *rightTop;
+@property (weak, nonatomic) IBOutlet UIView *leftMiddle;
+@property (weak, nonatomic) IBOutlet UIView *centerMiddle;
+@property (weak, nonatomic) IBOutlet UIView *rightMiddle;
+@property (weak, nonatomic) IBOutlet UIView *leftBottom;
+@property (weak, nonatomic) IBOutlet UIView *centerBottom;
+@property (weak, nonatomic) IBOutlet UIView *rightBottom;
+@property (weak, nonatomic) IBOutlet UIButton *info;
+
+- (IBAction)infoPressed:(id)sender;
+
 
 @end
 

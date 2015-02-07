@@ -12,8 +12,10 @@
 		3BCF50801A856E1500BCE10F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507F1A856E1500BCE10F /* ViewController.m */; };
 		3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50811A856E1500BCE10F /* Main.storyboard */; };
 		3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50841A856E1500BCE10F /* Images.xcassets */; };
-		3BCF50881A856E1500BCE10F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50861A856E1500BCE10F /* LaunchScreen.xib */; };
 		3BCF50941A856E1500BCE10F /* Tic_Tac_SnowTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50931A856E1500BCE10F /* Tic_Tac_SnowTests.m */; };
+		3BCF509F1A85756800BCE10F /* XOImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF509E1A85756800BCE10F /* XOImageView.m */; };
+		3BCF50A21A85786D00BCE10F /* infoView.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50A11A85786D00BCE10F /* infoView.m */; };
+		3BCF50A61A857B4800BCE10F /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3BCF50A51A857B4800BCE10F /* LaunchScreen.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,10 +38,14 @@
 		3BCF507F1A856E1500BCE10F /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		3BCF50821A856E1500BCE10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		3BCF50841A856E1500BCE10F /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		3BCF50871A856E1500BCE10F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		3BCF508D1A856E1500BCE10F /* Tic Tac SnowTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tic Tac SnowTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCF50921A856E1500BCE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCF50931A856E1500BCE10F /* Tic_Tac_SnowTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tic_Tac_SnowTests.m; sourceTree = "<group>"; };
+		3BCF509D1A85756800BCE10F /* XOImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XOImageView.h; sourceTree = "<group>"; };
+		3BCF509E1A85756800BCE10F /* XOImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XOImageView.m; sourceTree = "<group>"; };
+		3BCF50A01A85786D00BCE10F /* infoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = infoView.h; sourceTree = "<group>"; };
+		3BCF50A11A85786D00BCE10F /* infoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = infoView.m; sourceTree = "<group>"; };
+		3BCF50A51A857B4800BCE10F /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,8 +92,12 @@
 				3BCF507E1A856E1500BCE10F /* ViewController.h */,
 				3BCF507F1A856E1500BCE10F /* ViewController.m */,
 				3BCF50811A856E1500BCE10F /* Main.storyboard */,
+				3BCF50A01A85786D00BCE10F /* infoView.h */,
+				3BCF50A11A85786D00BCE10F /* infoView.m */,
+				3BCF509D1A85756800BCE10F /* XOImageView.h */,
+				3BCF509E1A85756800BCE10F /* XOImageView.m */,
 				3BCF50841A856E1500BCE10F /* Images.xcassets */,
-				3BCF50861A856E1500BCE10F /* LaunchScreen.xib */,
+				3BCF50A51A857B4800BCE10F /* LaunchScreen.xib */,
 				3BCF50771A856E1500BCE10F /* Supporting Files */,
 			);
 			path = "Tic Tac Snow";
@@ -199,8 +209,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCF50A61A857B4800BCE10F /* LaunchScreen.xib in Resources */,
 				3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */,
-				3BCF50881A856E1500BCE10F /* LaunchScreen.xib in Resources */,
 				3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -219,7 +229,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BCF50A21A85786D00BCE10F /* infoView.m in Sources */,
 				3BCF50801A856E1500BCE10F /* ViewController.m in Sources */,
+				3BCF509F1A85756800BCE10F /* XOImageView.m in Sources */,
 				3BCF507D1A856E1500BCE10F /* AppDelegate.m in Sources */,
 				3BCF507A1A856E1500BCE10F /* main.m in Sources */,
 			);
@@ -250,14 +262,6 @@
 				3BCF50821A856E1500BCE10F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		3BCF50861A856E1500BCE10F /* LaunchScreen.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				3BCF50871A856E1500BCE10F /* Base */,
-			);
-			name = LaunchScreen.xib;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -348,6 +352,7 @@
 				INFOPLIST_FILE = "Tic Tac Snow/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -358,6 +363,7 @@
 				INFOPLIST_FILE = "Tic Tac Snow/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
