@@ -81,6 +81,7 @@
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
     // when finger is lifted
+    // reference: http://stackoverflow.com/questions/6467638/detecting-pan-gesture-end
     if(recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended.");
         
@@ -89,6 +90,7 @@
             if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
                 // check the area of overlap (must be >5000 to continue)
                 // this is to ensure that only one frame is filled (adjacent ones aren't affected)
+                // reference: http://www.bignerdranch.com/blog/rectangles-part-2/
                 CGRect intersection = CGRectIntersection(self.xView.frame, [self.view viewWithTag:i].frame);
                 NSInteger area = intersection.size.width * intersection.size.height;
                 if (area > 5000){
