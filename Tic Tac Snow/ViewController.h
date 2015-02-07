@@ -34,6 +34,8 @@
 
 @property NSInteger moveCount;
 
+@property NSMutableArray *gridTracker;
+
 - (IBAction)infoPressed:(id)sender;
 - (IBAction)closeInfo:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;

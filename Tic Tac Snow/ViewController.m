@@ -24,7 +24,12 @@
     // if info button is pressed
     [self.info addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchDown];
     
-    self.moveCount = 0; // initialize move count (use to toggle between turns)
+    self.moveCount = 0; // initialize move count (used to toggle between turns)
+    
+    self.gridTracker = [[NSMutableArray alloc] initWithCapacity:9]; // keep track of if spaces in grid are taken
+    for (int i=0; i<10; i++){
+        [self.gridTracker addObject:@"0"]; // initialize
+    }
     
     [self toggleTurn];
 
@@ -69,10 +74,11 @@
     CGPoint translation = [recognizer translationInView:self.view];
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
-
+    
     // when finger is lifted
     if(recognizer.state == UIGestureRecognizerStateEnded) {
         NSLog(@"Gesture ended.");
+        
         // determine if view frames are intersecting
         for (int i=1; i<10; i++){
             if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
@@ -85,14 +91,19 @@
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                    if (imageView.image == nil){ // can only place piece if there isn't one there already (not working)
+                    //if (imageView.image == nil){ // can only place piece if there isn't one there already (not working)
+                    //if ([self.view viewWithTag:i] == nil){
+                    if ([[self.gridTracker objectAtIndex:(i-1)] isEqual:@"0"]){
                         imageView.image = [UIImage imageNamed:@"X"];
                         [[self.view viewWithTag:i] addSubview:imageView];
                         [self successX];
                         self.moveCount++;
+                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"taken"];
                         [self toggleTurn];
+                        NSLog(@"Placed piece at: %d", i);
                         NSLog(@"Move count: %ld", (long)self.moveCount);
                     } else {
+                        NSLog(@"There's already a piece there!");
                         [self resetX];
                     }
                 } else {
@@ -111,13 +122,17 @@
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                    if (imageView.image == nil){
+                    if ([[self.gridTracker objectAtIndex:(i-1)] isEqual:@"0"]){
                         imageView.image = [UIImage imageNamed:@"O"];
                         [[self.view viewWithTag:i] addSubview:imageView];
                         [self successO];
                         self.moveCount++;
+                        [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"taken"];
                         [self toggleTurn];
                         NSLog(@"Move count: %ld", (long)self.moveCount);
+                    } else {
+                        NSLog(@"There's already a piece there!");
+                        [self resetO];
                     }
                 } else {
                     [self resetO];
