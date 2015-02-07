@@ -48,6 +48,19 @@
     NSLog(@"Button pressed: %ld", (long)self.moveCount);
     
     self.infoView.hidden = NO;
+    self.infoTitle.text = @"HOW TO PLAY";
+    self.infoText.text = @"This is a test.";
+    
+    // resize text view
+    // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
+    CGFloat fixedWidth = self.infoText.frame.size.width;
+    CGSize newSize = [self.infoText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = self.infoText.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    self.infoText.frame = newFrame;
+    
+    [self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
+    [self.infoDismiss addTarget:self action:@selector(closeInfo:) forControlEvents:UIControlEventTouchDown];
 }
 
 // reference: http://www.raywenderlich.com/6567/uigesturerecognizer-tutorial-in-ios-5-pinches-pans-and-more
@@ -63,6 +76,8 @@
     
 }
 
-
+- (IBAction)closeInfo:(id)sender {
+    self.infoView.hidden = YES;
+}
 
 @end

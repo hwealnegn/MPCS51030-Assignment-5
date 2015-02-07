@@ -27,9 +27,15 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *info;
 
+// info view properties
+@property (weak, nonatomic) IBOutlet UILabel *infoTitle;
+@property (weak, nonatomic) IBOutlet UITextView *infoText;
+@property (weak, nonatomic) IBOutlet UIButton *infoDismiss;
+
 @property NSInteger moveCount;
 
 - (IBAction)infoPressed:(id)sender;
+- (IBAction)closeInfo:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 
 @end
