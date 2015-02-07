@@ -37,6 +37,7 @@
 - (IBAction)infoPressed:(id)sender;
 - (IBAction)closeInfo:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
+- (void)resizeToFitSubviews;
 
 @end
 

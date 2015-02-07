@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "infoView.h"
+#import "XOImageView.h"
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet infoView *infoView;
@@ -37,6 +38,7 @@
         self.oView.alpha = 1;
         self.oView.userInteractionEnabled = true;
     }
+
 }
 
 - (void)didReceiveMemoryWarning {
@@ -46,6 +48,11 @@
 
 - (IBAction)infoPressed:(id)sender {
     NSLog(@"Button pressed: %ld", (long)self.moveCount);
+    
+    /*infoView *instructions = [[infoView alloc] init];
+    instructions.title.text = @"HOW TO PLAY";
+    instructions.info.text = @"This is a test hello hello";
+    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];*/
     
     self.infoView.hidden = NO;
     self.infoTitle.text = @"HOW TO PLAY";
@@ -59,7 +66,12 @@
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     self.infoText.frame = newFrame;
     
-    [self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
+    //[self resizeToFitSubviews];
+    
+    [self.infoView sizeToFit];
+    
+    
+    //[self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
     [self.infoDismiss addTarget:self action:@selector(closeInfo:) forControlEvents:UIControlEventTouchDown];
 }
 
@@ -70,14 +82,38 @@
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
 
     // determine if view frames are intersecting
-    if (CGRectIntersectsRect(self.xView.frame, self.leftTop.frame)){
-        NSLog(@"THEY'RE INTERSECTING");
+    for (int i=1; i<10; i++){
+        if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
+            NSLog(@"THEY'RE INTERSECTING");
+        
+            // add image
+            //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x100.png"]];
+            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+
+            if (imageView.image == nil){
+                imageView.image = [UIImage imageNamed:@"X"];
+                [[self.view viewWithTag:i] addSubview:imageView];
+            }
+        }
     }
-    
+
 }
 
 - (IBAction)closeInfo:(id)sender {
     self.infoView.hidden = YES;
+}
+
+// NOTE: NOT WORKING PROPERLY
+- (void)resizeToFitSubviews {
+    float w = 0;
+    float h = 0;
+    
+    float fw = self.infoView.frame.origin.x + self.infoText.frame.size.width;
+    float fh = self.infoView.frame.origin.y + self.infoText.frame.size.height + self.infoDismiss.frame.size.height;
+    w = MAX(fw, w);
+    h = MAX(fh, h);
+    
+    [self.infoView setFrame:CGRectMake(self.infoView.frame.origin.x, self.infoView.frame.origin.y, w, h)];
 }
 
 @end

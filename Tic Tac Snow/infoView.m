@@ -22,7 +22,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.backgroundColor = [UIColor whiteColor];
-        
+
         self.title.text = @"HELLO";
         self.info.text = @"This is a test.";
         [self.dismiss setTitle:@"OK" forState:UIControlStateNormal]; // reference: http://stackoverflow.com/questions/11417077/changing-uibutton-text

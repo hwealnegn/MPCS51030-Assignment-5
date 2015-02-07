@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>CA739549-DCE9-41EF-BC10-40D3499FCEE0</string>
+	<key>IDESourceControlProjectName</key>
+	<string>Tic Tac Snow</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CF81C9768718CA1DBAB9D60B115A358DDBEEADE6</key>
+		<string>https://github.com/uchicago-mobi/hwealnegn-MPCS51030-Winter-2015-Assignment-5</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>Tic Tac Snow.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CF81C9768718CA1DBAB9D60B115A358DDBEEADE6</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/uchicago-mobi/hwealnegn-MPCS51030-Winter-2015-Assignment-5</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CF81C9768718CA1DBAB9D60B115A358DDBEEADE6</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CF81C9768718CA1DBAB9D60B115A358DDBEEADE6</string>
+			<key>IDESourceControlWCCName</key>
+			<string>hwealnegn-MPCS51030-Winter-2015-Assignment-5</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -420,6 +420,7 @@
 				3BCF50991A856E1500BCE10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3BCF509A1A856E1500BCE10F /* Build configuration list for PBXNativeTarget "Tic Tac SnowTests" */ = {
 			isa = XCConfigurationList;
@@ -428,6 +429,7 @@
 				3BCF509C1A856E1500BCE10F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
