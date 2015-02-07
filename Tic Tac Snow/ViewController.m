@@ -85,13 +85,15 @@
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                    if (imageView.image == nil){
+                    if (imageView.image == nil){ // can only place piece if there isn't one there already (not working)
                         imageView.image = [UIImage imageNamed:@"X"];
                         [[self.view viewWithTag:i] addSubview:imageView];
-                        [self resetX];
+                        [self successX];
                         self.moveCount++;
                         [self toggleTurn];
                         NSLog(@"Move count: %ld", (long)self.moveCount);
+                    } else {
+                        [self resetX];
                     }
                 } else {
                     [self resetX];
@@ -112,7 +114,7 @@
                     if (imageView.image == nil){
                         imageView.image = [UIImage imageNamed:@"O"];
                         [[self.view viewWithTag:i] addSubview:imageView];
-                        [self resetO];
+                        [self successO];
                         self.moveCount++;
                         [self toggleTurn];
                         NSLog(@"Move count: %ld", (long)self.moveCount);
@@ -137,12 +139,37 @@
         self.xView.userInteractionEnabled = true;
         self.oView.alpha = 0.5;
         self.oView.userInteractionEnabled = false;
+        
+        // animation to indicate turn
+        [UIView animateWithDuration:2.0 animations:^{
+            self.xView.transform = CGAffineTransformScale(self.xView.transform, 2, 2);
+            self.xView.transform = CGAffineTransformScale(self.xView.transform, 0.5, 0.5);
+        }];
+        
     } else {
         self.xView.alpha = 0.5;
         self.xView.userInteractionEnabled = false;
         self.oView.alpha = 1;
         self.oView.userInteractionEnabled = true;
+        
+        // animation to indicate turn
+        [UIView animateWithDuration:2.0 animations:^{
+            self.oView.transform = CGAffineTransformScale(self.oView.transform, 2, 2);
+            self.oView.transform = CGAffineTransformScale(self.oView.transform, 0.5, 0.5);
+        }];
     }
+}
+
+- (void)successX {
+    [UIView animateWithDuration:0 animations:^{
+        self.xView.center = CGPointMake(66,600);
+    }];
+}
+
+- (void)successO {
+    [UIView animateWithDuration:0 animations:^{
+        self.oView.center = CGPointMake(309,597);
+    }];
 }
 
 // "return" X into original position
