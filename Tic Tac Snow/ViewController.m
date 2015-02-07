@@ -26,18 +26,7 @@
     
     self.moveCount = 0; // initialize move count (use to toggle between turns)
     
-    // toggle between turns
-    if (self.moveCount%2==0) {
-        self.xView.alpha = 1;
-        self.xView.userInteractionEnabled = true;
-        self.oView.alpha = 0.5;
-        self.oView.userInteractionEnabled = false;
-    } else {
-        self.xView.alpha = 0.5;
-        self.xView.userInteractionEnabled = false;
-        self.oView.alpha = 1;
-        self.oView.userInteractionEnabled = true;
-    }
+    [self toggleTurn];
 
 }
 
@@ -47,7 +36,7 @@
 }
 
 - (IBAction)infoPressed:(id)sender {
-    NSLog(@"Button pressed: %ld", (long)self.moveCount);
+    NSLog(@"Button pressed");
     
     /*infoView *instructions = [[infoView alloc] init];
     instructions.title.text = @"HOW TO PLAY";
@@ -81,19 +70,42 @@
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
 
-    // determine if view frames are intersecting
-    for (int i=1; i<10; i++){
-        if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
-            //NSLog(@"THEY'RE INTERSECTING");
-        
-            // add image
-            //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x100.png"]];
-            UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
-
-            // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-            if (imageView.image == nil){
-                imageView.image = [UIImage imageNamed:@"X"];
-                [[self.view viewWithTag:i] addSubview:imageView];
+    // when finger is lifted
+    if(recognizer.state == UIGestureRecognizerStateEnded) {
+        NSLog(@"Gesture ended.");
+        // determine if view frames are intersecting
+        // NOTE TO SELF: NEED TO FIX WHEN INTERSECTING MORE THAN ONE VIEW FRAME IN GRID
+        for (int i=1; i<10; i++){
+            if (CGRectIntersectsRect(self.xView.frame, [self.view viewWithTag:i].frame)) {
+                //NSLog(@"THEY'RE INTERSECTING");
+                
+                // add image
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                
+                // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
+                if (imageView.image == nil){
+                    imageView.image = [UIImage imageNamed:@"X"];
+                    [[self.view viewWithTag:i] addSubview:imageView];
+                    self.moveCount++;
+                    [self toggleTurn];
+                    NSLog(@"Move count: %ld", (long)self.moveCount);
+                }
+            }
+            
+            if (CGRectIntersectsRect(self.oView.frame, [self.view viewWithTag:i].frame)) {
+                //NSLog(@"THEY'RE INTERSECTING");
+                
+                // add image
+                UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                
+                // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
+                if (imageView.image == nil){
+                    imageView.image = [UIImage imageNamed:@"O"];
+                    [[self.view viewWithTag:i] addSubview:imageView];
+                    self.moveCount++;
+                    [self toggleTurn];
+                    NSLog(@"Move count: %ld", (long)self.moveCount);
+                }
             }
         }
     }
@@ -102,6 +114,21 @@
 
 - (IBAction)closeInfo:(id)sender {
     self.infoView.hidden = YES;
+}
+
+// toggle between turns
+- (void)toggleTurn {
+    if (self.moveCount%2==0) {
+        self.xView.alpha = 1;
+        self.xView.userInteractionEnabled = true;
+        self.oView.alpha = 0.5;
+        self.oView.userInteractionEnabled = false;
+    } else {
+        self.xView.alpha = 0.5;
+        self.xView.userInteractionEnabled = false;
+        self.oView.alpha = 1;
+        self.oView.userInteractionEnabled = true;
+    }
 }
 
 // NOTE: NOT WORKING PROPERLY

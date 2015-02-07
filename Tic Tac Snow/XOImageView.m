@@ -31,7 +31,7 @@
 }
 
 - (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Touches cancelled: %@", event);
+    //NSLog(@"Touches cancelled: %@", event);
 }
 
 @end
