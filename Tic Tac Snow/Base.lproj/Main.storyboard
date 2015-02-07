@@ -28,6 +28,11 @@
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <gestureRecognizers/>
                             </view>
+                            <view contentMode="scaleToFill" id="sBX-IZ-EkW">
+                                <rect key="frame" x="259" y="126" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </view>
                             <view contentMode="scaleToFill" id="Nq9-Vd-GXE">
                                 <rect key="frame" x="16" y="244" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -77,18 +82,13 @@
                                 </connections>
                             </button>
                             <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="O" id="w3H-8M-XcO" customClass="XOImageView">
-                                <rect key="frame" x="188" y="527" width="180" height="120"/>
+                                <rect key="frame" x="195" y="527" width="180" height="120"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <gestureRecognizers/>
                                 <connections>
                                     <outletCollection property="gestureRecognizers" destination="B4R-lG-8nB" appends="YES" id="HGr-SI-SAz"/>
                                 </connections>
                             </imageView>
-                            <view contentMode="scaleToFill" id="sBX-IZ-EkW">
-                                <rect key="frame" x="259" y="126" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
@@ -109,8 +109,16 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="gcy-GJ-vdx"/>
-                <panGestureRecognizer minimumNumberOfTouches="1" id="B4R-lG-8nB"/>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="gcy-GJ-vdx">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="0ij-go-dNe"/>
+                    </connections>
+                </panGestureRecognizer>
+                <panGestureRecognizer minimumNumberOfTouches="1" id="B4R-lG-8nB">
+                    <connections>
+                        <action selector="handlePan:" destination="BYZ-38-t0r" id="JzX-F5-q2i"/>
+                    </connections>
+                </panGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="233.5" y="405.5"/>
         </scene>

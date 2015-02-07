@@ -24,6 +24,7 @@
 
 - (IBAction)infoPressed:(id)sender;
 
+- (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 
 @end
 
