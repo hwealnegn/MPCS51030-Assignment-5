@@ -94,6 +94,7 @@
                 if (area > 5000){
                     // add image
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                    imageView.tag = 200+i; // tag each image view
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
                     //if (imageView.image == nil){ // can only place piece if there isn't one there already (not working)
@@ -256,6 +257,19 @@
         ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"6"])) {
         NSLog(@"O WINS!");
     }
+    
+    if (self.moveCount==9){
+        NSLog(@"TIE!");
+    }
+}
+
+// NEED TO FIGURE THIS OUT
+- (void)resetBoard {
+    /*for (int i=0; i<10; i++){
+        for (UIView *view in [self.view viewWithTag:i]){
+            [view removeFromSuperview];
+        }
+    }*/
 }
 
 // NOTE: NOT WORKING PROPERLY
