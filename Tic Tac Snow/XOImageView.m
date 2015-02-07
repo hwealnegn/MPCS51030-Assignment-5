@@ -18,4 +18,20 @@
 }
 */
 
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touches began: %@", event);
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touches moved: %@", event);
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touches ended: %@", event);
+}
+
+- (void)touchesCancelled:(NSSet *)touches withEvent:(UIEvent *)event {
+    NSLog(@"Touches cancelled: %@", event);
+}
+
 @end

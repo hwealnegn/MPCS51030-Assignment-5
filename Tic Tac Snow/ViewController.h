@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "XOImageView.h"
 
 @interface ViewController : UIViewController
 
@@ -20,10 +21,15 @@
 @property (weak, nonatomic) IBOutlet UIView *leftBottom;
 @property (weak, nonatomic) IBOutlet UIView *centerBottom;
 @property (weak, nonatomic) IBOutlet UIView *rightBottom;
+
+@property (weak, nonatomic) IBOutlet XOImageView *xView;
+@property (weak, nonatomic) IBOutlet XOImageView *oView;
+
 @property (weak, nonatomic) IBOutlet UIButton *info;
 
-- (IBAction)infoPressed:(id)sender;
+@property NSInteger moveCount;
 
+- (IBAction)infoPressed:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 
 @end
