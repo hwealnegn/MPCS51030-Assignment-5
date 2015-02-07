@@ -90,6 +90,7 @@
             //UIImageView *imageView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"x100.png"]];
             UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
 
+            // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
             if (imageView.image == nil){
                 imageView.image = [UIImage imageNamed:@"X"];
                 [[self.view viewWithTag:i] addSubview:imageView];
