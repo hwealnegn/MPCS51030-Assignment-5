@@ -7,6 +7,8 @@
 //
 
 #import "XOImageView.h"
+@import AudioToolbox;
+@import AVFoundation;
 
 @implementation XOImageView
 

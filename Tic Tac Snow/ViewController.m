@@ -9,6 +9,8 @@
 #import "ViewController.h"
 #import "infoView.h"
 #import "XOImageView.h"
+@import AudioToolbox;
+@import AVFoundation;
 
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet infoView *infoView;
@@ -48,14 +50,12 @@
 - (IBAction)infoPressed:(id)sender {
     NSLog(@"Button pressed");
     
-    /*infoView *instructions = [[infoView alloc] init];
-    instructions.title.text = @"HOW TO PLAY";
-    instructions.info.text = @"This is a test hello hello";
-    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];*/
-    
+    //[self animateInfo];
     self.infoView.hidden = NO;
+    
     self.infoTitle.text = @"HOW TO PLAY";
     self.infoText.text = @"This is a test.";
+    
     
     // resize text view
     // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
@@ -67,11 +67,38 @@
     
     //[self resizeToFitSubviews];
     
-    [self.infoView sizeToFit];
+    //[self.infoView sizeToFit]; // doesn't work
     
     
-    //[self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
+    [self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
     [self.infoDismiss addTarget:self action:@selector(closeInfo:) forControlEvents:UIControlEventTouchDown];
+}
+
+- (void)animateInfo {
+    NSLog(@"Animation called");
+    
+    CGRect offscreen = CGRectMake(360, -100, self.infoView.frame.size.width, self.infoView.frame.size.height);
+    infoView *instructions = [[infoView alloc] initWithFrame:offscreen];
+    instructions.title.text = @"HOW TO PLAY";
+    instructions.info.text = @"This is a test hello hello";
+    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];
+    
+    // resize text view
+    // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
+    CGFloat fixedWidth = self.infoText.frame.size.width;
+    CGSize newSize = [self.infoText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
+    CGRect newFrame = self.infoText.frame;
+    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
+    self.infoText.frame = newFrame;
+    
+    [self.view addSubview:self.infoView];
+    
+    [UIView animateWithDuration:1.0 animations:^{
+        instructions.center = CGPointMake(self.view.center.x, self.view.center.y);
+    }
+     completion:^(BOOL finished) {
+         NSLog(@"Animation complete");
+     }];
 }
 
 // reference: http://www.raywenderlich.com/6567/uigesturerecognizer-tutorial-in-ios-5-pinches-pans-and-more
@@ -99,8 +126,6 @@
                     imageView.tag = 200+i; // tag each image view
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
-                    //if (imageView.image == nil){ // can only place piece if there isn't one there already (not working)
-                    //if ([self.view viewWithTag:i] == nil){
                     if ([[self.gridTracker objectAtIndex:(i-1)] isEqual:@"0"]){
                         imageView.image = [UIImage imageNamed:@"X"];
                         [[self.view viewWithTag:i] addSubview:imageView];
@@ -128,6 +153,7 @@
                 
                     // add image
                     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
+                    imageView.tag = 200+i;
                 
                     // reference: http://stackoverflow.com/questions/6325849/how-to-test-for-an-empty-uiimageview
                     if ([[self.gridTracker objectAtIndex:(i-1)] isEqual:@"0"]){
@@ -148,7 +174,10 @@
             }
         }
     }
-    [self checkForWin];
+    [self checkForWin]; // weird behavior (change when this occurs)
+    if (self.moveCount == 9){
+        [self resetBoard];
+    }
 }
 
 - (IBAction)closeInfo:(id)sender {
@@ -222,16 +251,11 @@
 - (void)checkForWin {
     NSLog(@"Check for win is working");
     
-    //NSMutableArray *xArray; // keep track of where X's are
-    //NSMutableArray *oArray; // keep track of where O's are
-    
     for (int i=0; i<10; i++){
         NSLog(@"Here's what is recorded in grid tracker at %d: %@", i, [self.gridTracker objectAtIndex:i]);
         
         if ([[self.gridTracker objectAtIndex:i] isEqual:@"X"]){
-            NSLog(@"MATCH!");
-            //[xArray addObject:[NSNumber numberWithInt:i]]; // add index to X array
-            [self.xArray addObject:[NSString stringWithFormat:@"%d",i]];
+            [self.xArray addObject:[NSString stringWithFormat:@"%d",i]]; // add index to X array
         }
         if ([[self.gridTracker objectAtIndex:i] isEqual:@"O"]){
             [self.oArray addObject:[NSString stringWithFormat:@"%d",i]]; // add index to O array
@@ -267,11 +291,31 @@
 
 // NEED TO FIGURE THIS OUT
 - (void)resetBoard {
-    /*for (int i=0; i<10; i++){
-        for (UIView *view in [self.view viewWithTag:i]){
-            [view removeFromSuperview];
+    NSLog(@"RESET BOARD");
+    
+    //id leftTopCopy = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self.leftTop]];
+    //UIView *leftTopCopy = [[UIView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
+    
+    
+    for (int i=1; i<10; i++){
+        [UIView animateWithDuration:1.0 animations:^{
+            //[self.view viewWithId:leftTopCopy].center = CGPointMake(500,500);
+        }];
+        
+        for (UIImageView *subview in [[self.view viewWithTag:i] subviews]) {
+                [subview removeFromSuperview];
         }
-    }*/
+    }
+    
+    for (int i=0; i<10; i++){
+        [self.gridTracker replaceObjectAtIndex:i withObject:@"0"]; // reinitialize
+    }
+    
+    [self.xArray removeAllObjects];
+    [self.xArray addObject:@"10"];
+    
+    [self.oArray removeAllObjects];
+    [self.oArray addObject:@"10"];
 }
 
 // NOTE: NOT WORKING PROPERLY
@@ -280,7 +324,7 @@
     float h = 0;
     
     float fw = self.infoView.frame.origin.x + self.infoText.frame.size.width;
-    float fh = self.infoView.frame.origin.y + self.infoText.frame.size.height + self.infoDismiss.frame.size.height;
+    float fh = self.infoView.frame.origin.y + self.infoTitle.frame.size.height + self.infoText.frame.size.height + self.infoDismiss.frame.size.height;
     w = MAX(fw, w);
     h = MAX(fh, h);
     

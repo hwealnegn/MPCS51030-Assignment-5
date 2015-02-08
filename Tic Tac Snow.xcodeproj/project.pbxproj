@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3B4DFD3F1A8811E8004BB5D0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DFD3E1A8811E8004BB5D0 /* AudioToolbox.framework */; };
+		3B4DFD411A8811FE004BB5D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DFD401A8811FE004BB5D0 /* AVFoundation.framework */; };
+		3B4DFD431A881439004BB5D0 /* buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B4DFD421A881439004BB5D0 /* buzzer.wav */; };
 		3BCF507A1A856E1500BCE10F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50791A856E1500BCE10F /* main.m */; };
 		3BCF507D1A856E1500BCE10F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507C1A856E1500BCE10F /* AppDelegate.m */; };
 		3BCF50801A856E1500BCE10F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507F1A856E1500BCE10F /* ViewController.m */; };
@@ -29,6 +32,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B4DFD3E1A8811E8004BB5D0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
+		3B4DFD401A8811FE004BB5D0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		3B4DFD421A881439004BB5D0 /* buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzzer.wav; sourceTree = "<group>"; };
 		3BCF50741A856E1500BCE10F /* Tic Tac Snow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tic Tac Snow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCF50781A856E1500BCE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCF50791A856E1500BCE10F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -53,6 +59,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4DFD411A8811FE004BB5D0 /* AVFoundation.framework in Frameworks */,
+				3B4DFD3F1A8811E8004BB5D0 /* AudioToolbox.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -69,6 +77,8 @@
 		3BCF506B1A856E1500BCE10F = {
 			isa = PBXGroup;
 			children = (
+				3B4DFD401A8811FE004BB5D0 /* AVFoundation.framework */,
+				3B4DFD3E1A8811E8004BB5D0 /* AudioToolbox.framework */,
 				3BCF50761A856E1500BCE10F /* Tic Tac Snow */,
 				3BCF50901A856E1500BCE10F /* Tic Tac SnowTests */,
 				3BCF50751A856E1500BCE10F /* Products */,
@@ -106,6 +116,7 @@
 		3BCF50771A856E1500BCE10F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				3B4DFD421A881439004BB5D0 /* buzzer.wav */,
 				3BCF50781A856E1500BCE10F /* Info.plist */,
 				3BCF50791A856E1500BCE10F /* main.m */,
 			);
@@ -209,6 +220,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3B4DFD431A881439004BB5D0 /* buzzer.wav in Resources */,
 				3BCF50A61A857B4800BCE10F /* LaunchScreen.xib in Resources */,
 				3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */,
 				3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */,
