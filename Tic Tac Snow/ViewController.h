@@ -8,8 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import "XOImageView.h"
+@import AudioToolbox;
+@import AVFoundation;
 
 @interface ViewController : UIViewController
+
+{
+    AVAudioPlayer *_soundEffect;
+}
 
 @property (weak, nonatomic) IBOutlet UIImageView *grid;
 @property (weak, nonatomic) IBOutlet UIView *leftTop;

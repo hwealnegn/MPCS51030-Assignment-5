@@ -26,6 +26,11 @@
 
 - (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"Touches moved: %@", event);
+    
+    NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"woosh"] ofType:@"mp3"];
+    _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+    [_soundEffect play];
+
 }
 
 - (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {

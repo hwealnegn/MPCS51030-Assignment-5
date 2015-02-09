@@ -107,9 +107,19 @@
                         [self toggleTurn];
                         NSLog(@"Placed piece at: %d", i);
                         NSLog(@"Move count: %ld", (long)self.moveCount);
+                        
+                        // successful placement audio
+                        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"blop"] ofType:@"mp3"];
+                        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+                        [_soundEffect play];
                     } else {
                         NSLog(@"There's already a piece there!");
                         [self resetX];
+                        
+                        // error placement audio
+                        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"buzzer"] ofType:@"wav"];
+                        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+                        [_soundEffect play];
                     }
                 } else {
                     [self resetX];
@@ -136,9 +146,19 @@
                         [self.gridTracker replaceObjectAtIndex:(i-1) withObject:@"O"];
                         [self toggleTurn];
                         NSLog(@"Move count: %ld", (long)self.moveCount);
+                        
+                        // successful placement audio
+                        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"blop"] ofType:@"mp3"];
+                        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+                        [_soundEffect play];
                     } else {
                         NSLog(@"There's already a piece there!");
                         [self resetO];
+                        
+                        // error placement audio
+                        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"buzzer"] ofType:@"wav"];
+                        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+                        [_soundEffect play];
                     }
                 } else {
                     [self resetO];
@@ -249,6 +269,11 @@
         // let O begin next game
         self.initialPlayer = 0;
         
+        // win audio
+        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"winning"] ofType:@"mp3"];
+        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+        [_soundEffect play];
+        
         // pop-up display
         self.infoTitle.text = @"GAME OVER";
         self.infoText.text = @"X wins!";
@@ -267,6 +292,11 @@
         
         // let X begin next game
         self.initialPlayer = 1;
+        
+        // win audio
+        NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"winning"] ofType:@"mp3"];
+        _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
+        [_soundEffect play];
         
         // pop-up display
         self.infoTitle.text = @"GAME OVER";

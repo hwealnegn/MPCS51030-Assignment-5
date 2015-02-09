@@ -9,7 +9,10 @@
 /* Begin PBXBuildFile section */
 		3B4DFD3F1A8811E8004BB5D0 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DFD3E1A8811E8004BB5D0 /* AudioToolbox.framework */; };
 		3B4DFD411A8811FE004BB5D0 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3B4DFD401A8811FE004BB5D0 /* AVFoundation.framework */; };
-		3B4DFD431A881439004BB5D0 /* buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B4DFD421A881439004BB5D0 /* buzzer.wav */; };
+		3B7539AF1A891D4D000483B7 /* woosh.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B7539AE1A891D4D000483B7 /* woosh.mp3 */; };
+		3B7539B11A891DE3000483B7 /* blop.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B7539B01A891DE3000483B7 /* blop.mp3 */; };
+		3B7539B31A891EE0000483B7 /* buzzer.wav in Resources */ = {isa = PBXBuildFile; fileRef = 3B7539B21A891EE0000483B7 /* buzzer.wav */; };
+		3B7539B51A891F50000483B7 /* winning.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 3B7539B41A891F50000483B7 /* winning.mp3 */; };
 		3BCF507A1A856E1500BCE10F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF50791A856E1500BCE10F /* main.m */; };
 		3BCF507D1A856E1500BCE10F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507C1A856E1500BCE10F /* AppDelegate.m */; };
 		3BCF50801A856E1500BCE10F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3BCF507F1A856E1500BCE10F /* ViewController.m */; };
@@ -34,7 +37,10 @@
 /* Begin PBXFileReference section */
 		3B4DFD3E1A8811E8004BB5D0 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		3B4DFD401A8811FE004BB5D0 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
-		3B4DFD421A881439004BB5D0 /* buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzzer.wav; sourceTree = "<group>"; };
+		3B7539AE1A891D4D000483B7 /* woosh.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = woosh.mp3; sourceTree = "<group>"; };
+		3B7539B01A891DE3000483B7 /* blop.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = blop.mp3; sourceTree = "<group>"; };
+		3B7539B21A891EE0000483B7 /* buzzer.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = buzzer.wav; sourceTree = "<group>"; };
+		3B7539B41A891F50000483B7 /* winning.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = winning.mp3; sourceTree = "<group>"; };
 		3BCF50741A856E1500BCE10F /* Tic Tac Snow.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Tic Tac Snow.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3BCF50781A856E1500BCE10F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3BCF50791A856E1500BCE10F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -116,7 +122,10 @@
 		3BCF50771A856E1500BCE10F /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				3B4DFD421A881439004BB5D0 /* buzzer.wav */,
+				3B7539AE1A891D4D000483B7 /* woosh.mp3 */,
+				3B7539B41A891F50000483B7 /* winning.mp3 */,
+				3B7539B01A891DE3000483B7 /* blop.mp3 */,
+				3B7539B21A891EE0000483B7 /* buzzer.wav */,
 				3BCF50781A856E1500BCE10F /* Info.plist */,
 				3BCF50791A856E1500BCE10F /* main.m */,
 			);
@@ -220,10 +229,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3B4DFD431A881439004BB5D0 /* buzzer.wav in Resources */,
+				3B7539B31A891EE0000483B7 /* buzzer.wav in Resources */,
 				3BCF50A61A857B4800BCE10F /* LaunchScreen.xib in Resources */,
 				3BCF50831A856E1500BCE10F /* Main.storyboard in Resources */,
+				3B7539AF1A891D4D000483B7 /* woosh.mp3 in Resources */,
 				3BCF50851A856E1500BCE10F /* Images.xcassets in Resources */,
+				3B7539B11A891DE3000483B7 /* blop.mp3 in Resources */,
+				3B7539B51A891F50000483B7 /* winning.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -7,7 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+@import AudioToolbox;
+@import AVFoundation;
 
 @interface XOImageView : UIImageView
+
+{
+    AVAudioPlayer *_soundEffect;
+}
 
 @end
