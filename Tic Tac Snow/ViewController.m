@@ -15,6 +15,9 @@
 @interface ViewController ()
 @property (weak, nonatomic) IBOutlet infoView *infoView;
 
+@property (nonatomic, strong) UIBezierPath *line;
+@property (nonatomic, strong) CAShapeLayer *shapeLayer;
+
 @end
 
 @implementation ViewController
@@ -41,6 +44,8 @@
     
     [self toggleTurn];
 
+    self.line = [UIBezierPath bezierPath];
+    self.shapeLayer = [CAShapeLayer layer];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -274,12 +279,46 @@
         _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
         [_soundEffect play];
         
+        // draw winning line
+        if ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"1"] && [self.xArray containsObject:@"2"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"3"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"5"]) {
+            [self.line moveToPoint:CGPointMake(self.leftMiddle.frame.origin.x+50.0, self.leftMiddle.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightMiddle.frame.origin.x+50.0, self.rightMiddle.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"6"] && [self.xArray containsObject:@"7"] && [self.xArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"3"] && [self.xArray containsObject:@"6"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"1"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"7"]) {
+            [self.line moveToPoint:CGPointMake(self.centerTop.frame.origin.x+50.0, self.centerTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.centerBottom.frame.origin.x+50.0, self.centerBottom.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"5"] && [self.xArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else if ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else {
+            [self.line moveToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+        }
+        
+        self.shapeLayer.path = [self.line CGPath];
+        self.shapeLayer.strokeColor = [[UIColor blueColor] CGColor];
+        self.shapeLayer.lineWidth = 3.0;
+        self.shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+        [self.view.layer addSublayer:self.shapeLayer];
+        
         // pop-up display
         self.infoTitle.text = @"GAME OVER";
         self.infoText.text = @"X wins!";
         [self.infoDismiss addTarget:self action:@selector(resetBoard:) forControlEvents:UIControlEventTouchUpInside];
         [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
         [self animateInfo];
+        
     } else if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
         ([self.oArray containsObject:@"3"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"5"]) ||
         ([self.oArray containsObject:@"6"] && [self.oArray containsObject:@"7"] && [self.oArray containsObject:@"8"]) ||
@@ -297,6 +336,39 @@
         NSString *soundFile = [[NSBundle mainBundle] pathForResource:[NSString stringWithFormat:@"winning"] ofType:@"mp3"];
         _soundEffect = [[AVAudioPlayer alloc] initWithContentsOfURL:[NSURL fileURLWithPath:soundFile] error:nil];
         [_soundEffect play];
+        
+        // draw winning line
+        if ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"3"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"5"]) {
+            [self.line moveToPoint:CGPointMake(self.leftMiddle.frame.origin.x+50.0, self.leftMiddle.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightMiddle.frame.origin.x+50.0, self.rightMiddle.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"6"] && [self.oArray containsObject:@"7"] && [self.oArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"3"] && [self.oArray containsObject:@"6"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"1"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"7"]) {
+            [self.line moveToPoint:CGPointMake(self.centerTop.frame.origin.x+50.0, self.centerTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.centerBottom.frame.origin.x+50.0, self.centerBottom.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"5"] && [self.oArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else if ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"8"]) {
+            [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.rightBottom.frame.origin.x+50.0, self.rightBottom.frame.origin.y+50.0)];
+        } else {
+            [self.line moveToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
+            [self.line addLineToPoint:CGPointMake(self.leftBottom.frame.origin.x+50.0, self.leftBottom.frame.origin.y+50.0)];
+        }
+        
+        self.shapeLayer.path = [self.line CGPath];
+        self.shapeLayer.strokeColor = [[UIColor blueColor] CGColor];
+        self.shapeLayer.lineWidth = 3.0;
+        self.shapeLayer.fillColor = [[UIColor clearColor] CGColor];
+        [self.view.layer addSublayer:self.shapeLayer];
         
         // pop-up display
         self.infoTitle.text = @"GAME OVER";
@@ -362,6 +434,10 @@
     
     [self.oArray removeAllObjects];
     [self.oArray addObject:@"10"];
+    
+    // remove line
+    [self.line removeAllPoints];
+    [self.shapeLayer removeFromSuperlayer];
 }
 
 /*- (IBAction)resetBoardClick:(id)sender {
