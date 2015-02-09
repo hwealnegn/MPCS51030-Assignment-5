@@ -42,7 +42,7 @@
 - (IBAction)infoPressed:(id)sender;
 - (IBAction)closeInfo:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
-- (IBAction)resetBoardClick:(id)sender;
+- (IBAction)resetBoard:(id)sender;
 
 @end
 

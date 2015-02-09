@@ -50,7 +50,6 @@
 
 - (IBAction)infoPressed:(id)sender {
     NSLog(@"Button pressed");
-    
     self.infoTitle.text = @"HOW TO PLAY";
     self.infoText.text = @"Players alternate turns placing pieces on the grid. The first to get three pieces in a row wins!";
     [self.infoDismiss setTitle:@"Got it!" forState:UIControlStateNormal];
@@ -148,16 +147,6 @@
         }
     }
     [self checkForWin];
-    
-    // when there is a tie (i.e. board is full but no winner)
-    if ((self.moveCount == 9 && self.initialPlayer == 0)||(self.moveCount == 10 && self.initialPlayer == 1)){
-        // pop-up display
-        self.infoTitle.text = @"GAME OVER";
-        self.infoText.text = @"It's a tie!";
-        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
-        [self animateInfo];
-    }
 }
 
 - (IBAction)closeInfo:(id)sender {
@@ -257,15 +246,16 @@
         ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"6"])) {
         NSLog(@"X WINS!");
         
+        // let O begin next game
+        self.initialPlayer = 0;
+        
         // pop-up display
         self.infoTitle.text = @"GAME OVER";
         self.infoText.text = @"X wins!";
-        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.infoDismiss addTarget:self action:@selector(resetBoard:) forControlEvents:UIControlEventTouchUpInside];
         [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
         [self animateInfo];
-    }
-    
-    if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
+    } else if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
         ([self.oArray containsObject:@"3"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"5"]) ||
         ([self.oArray containsObject:@"6"] && [self.oArray containsObject:@"7"] && [self.oArray containsObject:@"8"]) ||
         ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"3"] && [self.oArray containsObject:@"6"]) ||
@@ -275,16 +265,29 @@
         ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"6"])) {
         NSLog(@"O WINS!");
         
+        // let X begin next game
+        self.initialPlayer = 1;
+        
         // pop-up display
         self.infoTitle.text = @"GAME OVER";
         self.infoText.text = @"O wins!";
-        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.infoDismiss addTarget:self action:@selector(resetBoard:) forControlEvents:UIControlEventTouchUpInside];
         [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
         [self animateInfo];
+    } else {
+        // when there is a tie (i.e. board is full but no winner)
+        if ((self.moveCount == 9 && self.initialPlayer == 0)||(self.moveCount == 10 && self.initialPlayer == 1)){
+            // pop-up display
+            self.infoTitle.text = @"GAME OVER";
+            self.infoText.text = @"It's a tie!";
+            [self.infoDismiss addTarget:self action:@selector(resetBoard:) forControlEvents:UIControlEventTouchUpInside];
+            [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
+            [self animateInfo];
+        }
     }
 }
 
-- (void)resetBoard {
+- (IBAction)resetBoard:(id)sender {
     NSLog(@"RESET BOARD");
     
     if (self.initialPlayer == 0) {
@@ -331,8 +334,8 @@
     [self.oArray addObject:@"10"];
 }
 
-- (IBAction)resetBoardClick:(id)sender {
+/*- (IBAction)resetBoardClick:(id)sender {
     [self resetBoard];
-}
+}*/
 
 @end
