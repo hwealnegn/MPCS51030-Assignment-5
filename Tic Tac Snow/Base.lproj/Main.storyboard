@@ -48,11 +48,6 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
-                            <view tag="8" contentMode="scaleToFill" id="moS-2c-u62">
-                                <rect key="frame" x="137" y="359" width="100" height="100"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </view>
                             <view tag="9" contentMode="scaleToFill" id="ZBR-mQ-6yp">
                                 <rect key="frame" x="259" y="359" width="100" height="100"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -89,7 +84,7 @@
                                     <outletCollection property="gestureRecognizers" destination="B4R-lG-8nB" appends="YES" id="HGr-SI-SAz"/>
                                 </connections>
                             </imageView>
-                            <view contentMode="scaleToFill" id="Uex-Pa-VUD" customClass="infoView">
+                            <view hidden="YES" contentMode="scaleToFill" id="Uex-Pa-VUD" customClass="infoView">
                                 <rect key="frame" x="62" y="214" width="250" height="160"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
@@ -120,6 +115,11 @@
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <view tag="8" contentMode="scaleToFill" id="moS-2c-u62">
+                                <rect key="frame" x="137" y="359" width="100" height="100"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>

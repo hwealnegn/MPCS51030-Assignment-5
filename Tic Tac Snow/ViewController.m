@@ -56,27 +56,6 @@
     [self.infoDismiss setTitle:@"Got it!" forState:UIControlStateNormal];
     
     [self animateInfo];
-    
-    /*
-    self.infoView.hidden = NO;
-    
-    self.infoTitle.text = @"HOW TO PLAY";
-    self.infoText.text = @"This is a test.";
-    
-    
-    // resize text view
-    // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
-    CGFloat fixedWidth = self.infoText.frame.size.width;
-    CGSize newSize = [self.infoText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = self.infoText.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    self.infoText.frame = newFrame;
-    [self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
-    [self.infoDismiss addTarget:self action:@selector(closeInfo:) forControlEvents:UIControlEventTouchDown];
-     */
-    
-    //[self resizeToFitSubviews];
-    //[self.infoView sizeToFit]; // doesn't work
 }
 
 - (void)animateInfo {
@@ -84,14 +63,6 @@
 
     self.infoView.center = CGPointMake(self.view.frame.size.width/2,-500);
     self.infoView.hidden = NO;
-    
-    // resize text view
-    // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
-    /*CGFloat fixedWidth = self.infoText.frame.size.width;
-    CGSize newSize = [self.infoText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
-    CGRect newFrame = self.infoText.frame;
-    newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    self.infoText.frame = newFrame;*/
     
     [self.view addSubview:self.infoView];
 
@@ -177,8 +148,15 @@
         }
     }
     [self checkForWin];
+    
+    // when there is a tie (i.e. board is full but no winner)
     if ((self.moveCount == 9 && self.initialPlayer == 0)||(self.moveCount == 10 && self.initialPlayer == 1)){
-        [self resetBoard];
+        // pop-up display
+        self.infoTitle.text = @"GAME OVER";
+        self.infoText.text = @"It's a tie!";
+        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
+        [self animateInfo];
     }
 }
 
@@ -355,19 +333,6 @@
 
 - (IBAction)resetBoardClick:(id)sender {
     [self resetBoard];
-}
-
-// NOTE: NOT WORKING PROPERLY
-- (void)resizeToFitSubviews {
-    float w = 0;
-    float h = 0;
-    
-    float fw = self.infoView.frame.origin.x + self.infoText.frame.size.width;
-    float fh = self.infoView.frame.origin.y + self.infoTitle.frame.size.height + self.infoText.frame.size.height + self.infoDismiss.frame.size.height;
-    w = MAX(fw, w);
-    h = MAX(fh, h);
-    
-    [self.infoView setFrame:CGRectMake(self.infoView.frame.origin.x, self.infoView.frame.origin.y, w, h)];
 }
 
 @end

@@ -43,7 +43,6 @@
 - (IBAction)closeInfo:(id)sender;
 - (IBAction)handlePan:(UIPanGestureRecognizer *)recognizer;
 - (IBAction)resetBoardClick:(id)sender;
-- (void)resizeToFitSubviews;
 
 @end
 
