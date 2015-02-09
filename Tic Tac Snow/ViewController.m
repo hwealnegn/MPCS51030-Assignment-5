@@ -84,6 +84,8 @@
     recognizer.view.center = CGPointMake(recognizer.view.center.x + translation.x, recognizer.view.center.y + translation.y);
     [recognizer setTranslation:CGPointMake(0, 0) inView:self.view];
     
+    NSLog(@"Move count: %ld, initial player: %ld", (long)self.moveCount, (long)self.initialPlayer);
+    
     // when finger is lifted
     // reference: http://stackoverflow.com/questions/6467638/detecting-pan-gesture-end
     if(recognizer.state == UIGestureRecognizerStateEnded) {
@@ -251,7 +253,7 @@
     NSLog(@"Check for win is working");
     
     for (int i=0; i<10; i++){
-        NSLog(@"Here's what is recorded in grid tracker at %d: %@", i, [self.gridTracker objectAtIndex:i]);
+        //NSLog(@"Here's what is recorded in grid tracker at %d: %@", i, [self.gridTracker objectAtIndex:i]);
         
         if ([[self.gridTracker objectAtIndex:i] isEqual:@"X"]){
             [self.xArray addObject:[NSString stringWithFormat:@"%d",i]]; // add index to X array
@@ -280,6 +282,7 @@
         [_soundEffect play];
         
         // draw winning line
+        // reference: http://stackoverflow.com/questions/16846413/how-do-you-draw-a-line-programmatically-from-a-view-controller
         if ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"1"] && [self.xArray containsObject:@"2"]) {
             [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
             [self.line addLineToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
@@ -338,6 +341,7 @@
         [_soundEffect play];
         
         // draw winning line
+        // reference: http://stackoverflow.com/questions/16846413/how-do-you-draw-a-line-programmatically-from-a-view-controller
         if ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) {
             [self.line moveToPoint:CGPointMake(self.leftTop.frame.origin.x+50.0, self.leftTop.frame.origin.y+50.0)];
             [self.line addLineToPoint:CGPointMake(self.rightTop.frame.origin.x+50.0, self.rightTop.frame.origin.y+50.0)];
@@ -439,9 +443,5 @@
     [self.line removeAllPoints];
     [self.shapeLayer removeFromSuperlayer];
 }
-
-/*- (IBAction)resetBoardClick:(id)sender {
-    [self resetBoard];
-}*/
 
 @end
