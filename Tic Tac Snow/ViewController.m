@@ -51,7 +51,9 @@
 - (IBAction)infoPressed:(id)sender {
     NSLog(@"Button pressed");
     
-    //[self animateInfo];
+    [self animateInfo];
+    
+    /*
     self.infoView.hidden = NO;
     
     self.infoTitle.text = @"HOW TO PLAY";
@@ -65,37 +67,42 @@
     CGRect newFrame = self.infoText.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
     self.infoText.frame = newFrame;
-    
-    //[self resizeToFitSubviews];
-    
-    //[self.infoView sizeToFit]; // doesn't work
-    
-    
     [self.infoDismiss setTitle:@"OK" forState:UIControlStateNormal];
     [self.infoDismiss addTarget:self action:@selector(closeInfo:) forControlEvents:UIControlEventTouchDown];
+     */
+    
+    //[self resizeToFitSubviews];
+    //[self.infoView sizeToFit]; // doesn't work
 }
 
 - (void)animateInfo {
     NSLog(@"Animation called");
     
-    CGRect offscreen = CGRectMake(360, -100, self.infoView.frame.size.width, self.infoView.frame.size.height);
-    infoView *instructions = [[infoView alloc] initWithFrame:offscreen];
+    //CGRect offscreen = CGRectMake(360, -100, self.infoView.frame.size.width, self.infoView.frame.size.height);
+    self.infoView.center = CGPointMake(360,-100);
+    self.infoView.hidden = NO;
+    self.infoView.title.text = @"HOW TO PLAY";
+    self.infoView.info.text = @"The rules go here.";
+    [self.infoView.dismiss setTitle:@"Got it!" forState:UIControlStateNormal];
+    
+    /*infoView *instructions = [[infoView alloc] initWithFrame:offscreen];
+    instructions.hidden = NO;
     instructions.title.text = @"HOW TO PLAY";
     instructions.info.text = @"This is a test hello hello";
-    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];
+    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];*/
     
     // resize text view
     // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
-    CGFloat fixedWidth = self.infoText.frame.size.width;
+    /*CGFloat fixedWidth = self.infoText.frame.size.width;
     CGSize newSize = [self.infoText sizeThatFits:CGSizeMake(fixedWidth, MAXFLOAT)];
     CGRect newFrame = self.infoText.frame;
     newFrame.size = CGSizeMake(fmaxf(newSize.width, fixedWidth), newSize.height);
-    self.infoText.frame = newFrame;
+    self.infoText.frame = newFrame;*/
     
     [self.view addSubview:self.infoView];
     
     [UIView animateWithDuration:1.0 animations:^{
-        instructions.center = CGPointMake(self.view.center.x, self.view.center.y);
+        self.infoView.center = CGPointMake(self.view.center.x, self.view.center.y);
     }
      completion:^(BOOL finished) {
          NSLog(@"Animation complete");
@@ -175,7 +182,7 @@
             }
         }
     }
-    [self checkForWin]; // weird behavior (change when this occurs)
+    [self checkForWin];
     if ((self.moveCount == 9 && self.initialPlayer == 0)||(self.moveCount == 10 && self.initialPlayer == 1)){
         [self resetBoard];
     }
@@ -304,6 +311,7 @@
     }
     
     for (int i=1; i<10; i++){
+        // create a copy of all UIViews in grid to animate off screen
         UIView *copy = [[UIView alloc] initWithFrame:CGRectMake([self.view viewWithTag:i].frame.origin.x, [self.view viewWithTag:i].frame.origin.y, 100, 100)];
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         
