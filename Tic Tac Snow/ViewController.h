@@ -33,6 +33,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *infoDismiss;
 
 @property NSInteger moveCount;
+@property NSInteger initialPlayer;
 
 @property NSMutableArray *gridTracker;
 @property NSMutableArray *xArray;

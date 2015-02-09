@@ -27,6 +27,7 @@
     [self.info addTarget:self action:@selector(infoPressed:) forControlEvents:UIControlEventTouchDown];
     
     self.moveCount = 0; // initialize move count (used to toggle between turns)
+    self.initialPlayer = 0; // 0 = X, 1 = O
     
     self.gridTracker = [[NSMutableArray alloc] initWithCapacity:9]; // keep track of if spaces in grid are taken
     for (int i=0; i<10; i++){
@@ -175,7 +176,7 @@
         }
     }
     [self checkForWin]; // weird behavior (change when this occurs)
-    if (self.moveCount == 9){
+    if ((self.moveCount == 9 && self.initialPlayer == 0)||(self.moveCount == 10 && self.initialPlayer == 1)){
         [self resetBoard];
     }
 }
@@ -271,6 +272,7 @@
         ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"8"]) ||
         ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"6"])) {
         NSLog(@"X WINS!");
+        [self resetBoard];
     }
     
     if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
@@ -282,6 +284,7 @@
         ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"8"]) ||
         ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"6"])) {
         NSLog(@"O WINS!");
+        [self resetBoard];
     }
     
     if (self.moveCount==9){
@@ -289,19 +292,36 @@
     }
 }
 
-// NEED TO FIGURE THIS OUT
 - (void)resetBoard {
     NSLog(@"RESET BOARD");
     
-    //id leftTopCopy = [NSKeyedUnarchiver unarchiveObjectWithData:[NSKeyedArchiver archivedDataWithRootObject:self.leftTop]];
-    //UIView *leftTopCopy = [[UIView alloc] initWithFrame:CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)]
-    
+    if (self.initialPlayer == 0) {
+        self.moveCount = 1; // O begins
+        self.initialPlayer = 1;
+    } else {
+        self.moveCount = 0; // X begins
+        self.initialPlayer = 0;
+    }
     
     for (int i=1; i<10; i++){
-        [UIView animateWithDuration:1.0 animations:^{
-            //[self.view viewWithId:leftTopCopy].center = CGPointMake(500,500);
-        }];
+        UIView *copy = [[UIView alloc] initWithFrame:CGRectMake([self.view viewWithTag:i].frame.origin.x, [self.view viewWithTag:i].frame.origin.y, 100, 100)];
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 100, 100)];
         
+        [self.view addSubview:copy];
+        
+        for (UIImageView *subview in [[self.view viewWithTag:i] subviews]) {
+            imageView.image = subview.image;
+        }
+        [copy addSubview:imageView];
+        
+        [UIView animateWithDuration:2.0 animations:^{
+            copy.center = CGPointMake(500,500);
+        }completion:^(BOOL complete){
+            NSLog(@"FLY AWAY");
+        }];
+    }
+    
+    for (int i=1; i<10; i++){
         for (UIImageView *subview in [[self.view viewWithTag:i] subviews]) {
                 [subview removeFromSuperview];
         }
