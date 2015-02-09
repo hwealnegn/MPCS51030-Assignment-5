@@ -51,6 +51,10 @@
 - (IBAction)infoPressed:(id)sender {
     NSLog(@"Button pressed");
     
+    self.infoTitle.text = @"HOW TO PLAY";
+    self.infoText.text = @"Players alternate turns placing pieces on the grid. The first to get three pieces in a row wins!";
+    [self.infoDismiss setTitle:@"Got it!" forState:UIControlStateNormal];
+    
     [self animateInfo];
     
     /*
@@ -77,19 +81,9 @@
 
 - (void)animateInfo {
     NSLog(@"Animation called");
-    
-    //CGRect offscreen = CGRectMake(360, -100, self.infoView.frame.size.width, self.infoView.frame.size.height);
-    self.infoView.center = CGPointMake(360,-100);
+
+    self.infoView.center = CGPointMake(self.view.frame.size.width/2,-500);
     self.infoView.hidden = NO;
-    self.infoView.title.text = @"HOW TO PLAY";
-    self.infoView.info.text = @"The rules go here.";
-    [self.infoView.dismiss setTitle:@"Got it!" forState:UIControlStateNormal];
-    
-    /*infoView *instructions = [[infoView alloc] initWithFrame:offscreen];
-    instructions.hidden = NO;
-    instructions.title.text = @"HOW TO PLAY";
-    instructions.info.text = @"This is a test hello hello";
-    [instructions.dismiss setTitle:@"GOT IT" forState:UIControlStateNormal];*/
     
     // resize text view
     // reference: http://stackoverflow.com/questions/50467/how-do-i-size-a-uitextview-to-its-content
@@ -100,7 +94,7 @@
     self.infoText.frame = newFrame;*/
     
     [self.view addSubview:self.infoView];
-    
+
     [UIView animateWithDuration:1.0 animations:^{
         self.infoView.center = CGPointMake(self.view.center.x, self.view.center.y);
     }
@@ -189,7 +183,12 @@
 }
 
 - (IBAction)closeInfo:(id)sender {
-    self.infoView.hidden = YES;
+    [UIView animateWithDuration:1.0 animations:^{
+        self.infoView.center = CGPointMake(self.view.frame.size.width/2, 1000);
+    }
+                     completion:^(BOOL finished) {
+                         NSLog(@"Animation complete");
+                     }];
 }
 
 // toggle between turns
@@ -279,7 +278,13 @@
         ([self.xArray containsObject:@"0"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"8"]) ||
         ([self.xArray containsObject:@"2"] && [self.xArray containsObject:@"4"] && [self.xArray containsObject:@"6"])) {
         NSLog(@"X WINS!");
-        [self resetBoard];
+        
+        // pop-up display
+        self.infoTitle.text = @"GAME OVER";
+        self.infoText.text = @"X wins!";
+        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
+        [self animateInfo];
     }
     
     if (([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"1"] && [self.oArray containsObject:@"2"]) ||
@@ -291,11 +296,13 @@
         ([self.oArray containsObject:@"0"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"8"]) ||
         ([self.oArray containsObject:@"2"] && [self.oArray containsObject:@"4"] && [self.oArray containsObject:@"6"])) {
         NSLog(@"O WINS!");
-        [self resetBoard];
-    }
-    
-    if (self.moveCount==9){
-        NSLog(@"TIE!");
+        
+        // pop-up display
+        self.infoTitle.text = @"GAME OVER";
+        self.infoText.text = @"O wins!";
+        [self.infoDismiss addTarget:self action:@selector(resetBoardClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.infoDismiss setTitle:@"Play Again" forState:UIControlStateNormal];
+        [self animateInfo];
     }
 }
 
@@ -344,6 +351,10 @@
     
     [self.oArray removeAllObjects];
     [self.oArray addObject:@"10"];
+}
+
+- (IBAction)resetBoardClick:(id)sender {
+    [self resetBoard];
 }
 
 // NOTE: NOT WORKING PROPERLY
