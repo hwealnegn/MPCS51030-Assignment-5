@@ -1,4 +1,13 @@
 # hwealnegn-MPCS51030-Winter-2015-Assignment-5
-MPCS51030-Winter-2015-Assignment-5 created for hwealnegn
+Grade: 10/10
 
-I used AVFoundation instead of AudioToolbox for the sound effects so that I could hear them from the computer/simulator.
+- Great job overall!
+
+- You should use properties instead of instance variables, e.g.
+{
+AVAudioPlayer *_soundEffect;
+}
+should instead look more like:
+@property (strong, nonatomic) AVAudioPlayer *soundEffectl
+
+- Keep as many properties private as possible
